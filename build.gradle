@@ -9,7 +9,7 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'org.springframework.boot'
+//apply plugin: 'org.springframework.boot'
 apply plugin: 'application'
 
 logging.captureStandardOutput LogLevel.QUIET
@@ -26,7 +26,7 @@ run {
 
 repositories {
     mavenCentral()
-    maven { url 'https://repo.spring.io/snapshot' }
+    //    maven { url 'https://repo.spring.io/snapshot' }
 }
     
 mainClassName='ohtu.Main'
