@@ -16,7 +16,7 @@ public class Stepdefs {
     WebDriver driver;
 
     public Stepdefs() {
-
+        this.driver = new FirefoxDriver();
     }
 
     @After
