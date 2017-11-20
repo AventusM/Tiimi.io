@@ -4,9 +4,8 @@ Viikon 1 DEADLINE
 
 TODO - Cucumberin aloitus (yksi feature toteutettava)
      - Codecov mukaan
-     - Travis mukaan
-[![Build Status](https://travis-ci.org/AventusM/Tiimi.io.svg?branch=anton)](https://travis-ci.org/AventusM/Tiimi.io)
-
+  [![Build Status](https://travis-ci.org/AventusM/Tiimi.io.svg?branch=anton)](https://travis-ci.org/AventusM/Tiimi.io)
+  Perustietokantayhteys
 
 [Sprint Backlog](https://docs.google.com/spreadsheets/d/1txE5kN1RW3MZ0ATjXr7Ip-5FNenp_UdfwdfBk9WX-hM/edit#gid=0)
 

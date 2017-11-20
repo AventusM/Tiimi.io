@@ -1,0 +1,6 @@
+Tietokantataulut
+
+Kirja
+
+Mahdollisesti Kurssi
+Jos KYLLÄ, niin Kirja-tauluun viiteavaimet tauluun Kurssi

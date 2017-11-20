@@ -5,7 +5,7 @@ import java.sql.*;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        Connection connection = DriverManager.getConnection("jdbc:sqlite:tietokanta.db");
+        Connection connection = DriverManager.getConnection("jdbc:sqlite:db/tietokanta.db");
         PreparedStatement statement = connection.prepareStatement("SELECT 1");
         ResultSet rs = statement.executeQuery();
         if (rs.next()) {
