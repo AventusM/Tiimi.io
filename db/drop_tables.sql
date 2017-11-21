@@ -1,0 +1,8 @@
+-- DROP TABLE lauseet
+
+DROP TABLE IF EXISTS Book;
+DROP TABLE IF EXISTS Courses;
+DROP TABLE IF EXISTS BookPrequisiteCourses;
+DROP TABLE IF EXISTS BookRelatedCourses;
+DROP TABLE IF EXISTS Tags;
+
