@@ -10,12 +10,9 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'application'
 
-logging.captureStandardOutput LogLevel.QUIET
 
 project.ext {
-    cucumberVersion = "1.2.5"
     junitVersion = "4.12"
-    seleniumVersion = "3.4.0"
 }
 
 run {
@@ -30,21 +27,11 @@ mainClassName='ohtu.Main'
 
 dependencies {
 
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: seleniumVersion
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version: seleniumVersion
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: seleniumVersion
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: seleniumVersion
-    testCompile("io.github.bonigarcia:webdrivermanager:1.6.2") {
-        exclude group: 'org.seleniumhq.selenium'
-    }
-    testCompile "info.cukes:cucumber-core:" + cucumberVersion
-    testCompile "info.cukes:cucumber-java:" + cucumberVersion
-    testCompile "info.cukes:cucumber-junit:" + cucumberVersion
     testCompile "junit:junit:" + junitVersion
-// https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
-compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.21.0'
- 
+    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.21.0'
+    compile group: 'com.sparkjava', name: 'spark-core', version: '2.2'
+    compile group: 'com.sparkjava', name: 'spark-template-thymeleaf', version: '2.3'
+
 }
 
 test {

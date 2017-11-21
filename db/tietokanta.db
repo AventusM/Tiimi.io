@@ -1,0 +1,6 @@
+CREATE TABLE Course(
+id integer PRIMARY KEY,
+course_id varchar(10),
+name varchar(20)
+);
+

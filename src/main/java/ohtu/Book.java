@@ -14,7 +14,7 @@ public class Book implements BookmarkInterface {
     private String author;
     private String title;
 //String vai erillinen luokka?
-    private String type;
+//    private String type;
 //private Tyyppi type;
     private String ISBN;
     private ArrayList<String> tags;
@@ -22,11 +22,10 @@ public class Book implements BookmarkInterface {
     private HashMap<String, String> relatedCourses;
 
     //Mahdollinen dependency injection - älkää ottako huomioon konstruktorin parametriä ainakaan aluksi
-    private Book(String author, String title, String type, String ISBN) {
+    public Book(String author, String title, String ISBN) {
         this.author = author;
         this.title = title;
         this.ISBN = ISBN;
-        this.type = type;
         this.tags = new ArrayList();
         this.prerequisiteCourses = new HashMap();
         this.relatedCourses = new HashMap();
@@ -56,10 +55,6 @@ public class Book implements BookmarkInterface {
         this.title = title;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public void setISBN(String ISBN) {
         this.ISBN = ISBN;
 
@@ -71,10 +66,6 @@ public class Book implements BookmarkInterface {
 
     public String getTitle() {
         return this.title;
-    }
-
-    public String getType() {
-        return this.type;
     }
 
     public String getISBN() {

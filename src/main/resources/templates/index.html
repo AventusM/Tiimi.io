@@ -1,0 +1,30 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>(Book)marks</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <ul style="list-style-type: none;">
+            <li th:each="book: ${books}">
+                <span th:text="${book.author}"></span>
+                <span th:text="${book.title}"></span>
+            </li>
+        </ul>
+        <br/>
+        <br/>
+        <br/>
+        <form method="POST" action="/">
+            Author:<br/>
+            <input type="text" name="author"/><br/>
+            Title:<br/>
+            <input type="text" name="title"/><br/>
+            ISBN:<br/>
+            <input type="text" name="isbn"/><br/><br/>
+            <input type="submit" value="Lisää kirja"/>
+        </form>
+
+    </body>
+</html>
