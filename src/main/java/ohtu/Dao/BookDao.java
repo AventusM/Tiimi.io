@@ -53,10 +53,10 @@ public class BookDao implements Dao<Book, Integer> {
         try (Connection conn = database.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO Book (title, author, ISBN, tags, dateAdded) VALUES (?, ?, ?, ?, ?)");
             stmt.setString(1, object.getTitle());
-            stmt.setString(1, object.getAuthor());
-            stmt.setString(1, object.getISBN());
-            stmt.setString(1, object.getTags());
-            stmt.setDate(1, object.getTime());
+            stmt.setString(2, object.getAuthor());
+            stmt.setString(3, object.getISBN());
+            stmt.setString(4, object.getTags());
+            stmt.setDate(5, object.getTime());
             stmt.executeUpdate();
         }
 
