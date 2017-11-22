@@ -24,7 +24,19 @@ public class BookDao implements Dao<Book, Integer> {
 
     @Override
     public Book findOne(Integer key) throws SQLException {
-        return findAll().stream().filter(u -> u.getId().equals(key)).findFirst().get();
+        try (Connection conn = database.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Book WHERE id = ?");
+            stmt.setInt(1, key);
+
+            ResultSet result = stmt.executeQuery();
+            if (!result.next()) {
+                return null;
+            }
+            Book b = new Book(result.getInt("id"), result.getString("title"), result.getString("author"), result.getString("ISBN"), result.getString("tags"), result.getDate("dateAdded"));
+            System.out.println(b.getTitle() + " " + b.getTags());
+            return b;
+
+        }
     }
 
     @Override
@@ -64,10 +76,10 @@ public class BookDao implements Dao<Book, Integer> {
 
     }
 
-    private Book findByName(String name) throws SQLException {
+    private Book findByName(String title) throws SQLException {
         try (Connection conn = database.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Book WHERE title = ?");
-            stmt.setString(1, name);
+            stmt.setString(1, title);
 
             ResultSet result = stmt.executeQuery();
             if (!result.next()) {

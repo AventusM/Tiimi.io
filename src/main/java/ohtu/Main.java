@@ -30,13 +30,11 @@ public class Main {
         }, new ThymeleafTemplateEngine());
 
         Spark.get("/books/:id", (req, res) -> {
+            System.out.println("eterwerwa");
             HashMap map = new HashMap<>();
-            Integer bookId = Integer.parseInt(req.queryParams(":id"));
-            try {
-                map.put("book", books.findOne(bookId));
-            } catch (SQLException ex) {
-                System.out.println("id not found");
-            }
+            Integer bookId = Integer.parseInt(req.params(":id"));
+            System.out.println("nyt etitää yks");
+            map.put("book", books.findOne(bookId));
             return new ModelAndView(map, "book");
         }, new ThymeleafTemplateEngine());
 
