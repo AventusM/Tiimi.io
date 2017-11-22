@@ -1,0 +1,35 @@
+-- CREATE TABLE lauseet
+
+CREATE TABLE Book(
+id integer PRIMARY KEY NOT NULL,
+title varchar(50) NOT NULL,
+author varchar(50) NOT NULL,
+ISBN varchar (50),
+tags varchar(50),
+dateAdded DATE NOT NULL
+);
+
+CREATE TABLE Course(
+id integer PRIMARY KEY NOT NULL,
+name varchar(50)
+);
+
+-- Liitostaulu
+
+CREATE TABLE BookPrequisiteCourses(
+book_id integer,
+course_id integer,
+
+FOREIGN KEY (book_id) REFERENCES Book(id),
+FOREIGN KEY (course_id) REFERENCES Course(id)
+);
+
+-- Liitostaulu
+
+CREATE TABLE BookRelatedCourses(
+book_id integer,
+course_id integer,
+
+FOREIGN KEY (book_id) REFERENCES Book(id),
+FOREIGN KEY (course_id) REFERENCES Course(id)
+);
