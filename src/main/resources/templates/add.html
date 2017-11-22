@@ -9,7 +9,7 @@
     <body>
         <a name="browse" href="/browse">browse</a>
         <br/>
-        <a name="newbook" href="/add">add a new book</a>
+        <a name="add" href="/add">add a new book</a>
         <form method="POST" action="/add">
             Author:<br/>
             <input type="text" name="author"/><br/>
@@ -17,7 +17,7 @@
             <input type="text" name="title"/><br/>
             ISBN:<br/>
             <input type="text" name="isbn"/><br/><br/>
-            <input type="submit" value="Add!"/>
+            <input name="submitbook" type="submit" value="Add!"/>
         </form>
     </body>
 </html>

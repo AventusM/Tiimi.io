@@ -4,6 +4,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,26 +14,31 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 public class Stepdefs {
 
     WebDriver driver = new HtmlUnitDriver();
-    String baseUrl = "http://localhost:4567";
+    String baseUrl = "http://localhost:4567/";
 
-    @Given("^browse is selected$")
-    public void browse_selected() throws Throwable {
+    public Stepdefs() {
         driver.get(baseUrl);
-        WebElement element = driver.findElement(By.name("browse"));
+    }
+
+    @Given("^add is selected$")
+    public void add_selected() throws Throwable {
+        WebElement element = driver.findElement(By.name("add"));
         element.click();
     }
 
-    @When("^author \"([^\"]*)\" and book name \"([^\"]*)\" are submitted")
-    public void author_and_book_name_are_given(String author, String title) throws Throwable {
-        WebElement element = driver.findElement(By.name("username"));
+    @When("^author \"([^\"]*)\" and book name \"([^\"]*)\" and ISBN \"([^\"]*)\" are submitted")
+    public void author_and_book_name_are_given(String author, String title, String ISBN) throws Throwable {
+        WebElement element = driver.findElement(By.name("author"));
         element.sendKeys(author);
-        element = driver.findElement(By.name("author"));
-        element.sendKeys(title);
         element = driver.findElement(By.name("title"));
-        element.submit();
+        element.sendKeys(title);
+        element = driver.findElement(By.name("isbn"));
+        element.sendKeys(ISBN);
+        element = driver.findElement(By.name("submitbook"));
+        element.click();
     }
 
-    @Then("^book named \"([^\"]*)\" is added$")
+    @Then("^book named \"([^\"]*)\" has been added$")
     public void user_has_added_new_bookmark(String title) throws Throwable {
         pageHasContent(title);
     }
