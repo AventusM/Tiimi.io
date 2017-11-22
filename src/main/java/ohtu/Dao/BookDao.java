@@ -14,10 +14,6 @@ import java.util.List;
 import ohtu.database.Database;
 import ohtu.domain.Book;
 
-/**
- *
- * @author tminka/ Only to test, this class will probably change
- */
 public class BookDao implements Dao<Book, Integer> {
 
     private Database database;
@@ -36,10 +32,10 @@ public class BookDao implements Dao<Book, Integer> {
         List<Book> users = new ArrayList<>();
 
         try (Connection conn = database.getConnection();
-                ResultSet result = conn.prepareStatement("SELECT id, name FROM Book").executeQuery()) {
+                ResultSet result = conn.prepareStatement("SELECT * FROM Book").executeQuery()) {
 
             while (result.next()) {
-                users.add(new Book(result.getInt("id"), result.getString("name")));
+                users.add(new Book(result.getInt("id"), result.getString("title"), result.getString("author"), result.getString("ISBN"), result.getString("tags"), result.getDate("dateAdded")));
             }
         }
 
@@ -48,25 +44,29 @@ public class BookDao implements Dao<Book, Integer> {
 
     @Override
     public Book saveOrUpdate(Book object) throws SQLException {
-        Book byName = findByName(object.getName());
+        Book byName = findByName(object.getTitle());
 
         if (byName != null) {
             return byName;
         }
 
         try (Connection conn = database.getConnection()) {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Book (name) VALUES (?)");
-            stmt.setString(1, object.getName());
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Book (title, author, ISBN, tags, dateAdded) VALUES (?, ?, ?, ?, ?)");
+            stmt.setString(1, object.getTitle());
+            stmt.setString(1, object.getAuthor());
+            stmt.setString(1, object.getISBN());
+            stmt.setString(1, object.getTags());
+            stmt.setDate(1, object.getTime());
             stmt.executeUpdate();
         }
 
-        return findByName(object.getName());
+        return findByName(object.getTitle());
 
     }
 
     private Book findByName(String name) throws SQLException {
         try (Connection conn = database.getConnection()) {
-            PreparedStatement stmt = conn.prepareStatement("SELECT id, name FROM Book WHERE name = ?");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Book WHERE title = ?");
             stmt.setString(1, name);
 
             ResultSet result = stmt.executeQuery();
@@ -74,7 +74,7 @@ public class BookDao implements Dao<Book, Integer> {
                 return null;
             }
 
-            return new Book(result.getInt("id"), result.getString("name"));
+            return new Book(result.getInt("id"), result.getString("title"), result.getString("author"), result.getString("ISBN"), result.getString("tags"), result.getDate("dateAdded"));
         }
     }
 

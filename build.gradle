@@ -1,8 +1,8 @@
 plugins {
-  id 'java'
-  id 'application'
-  id 'com.github.johnrengelman.shadow' version '2.0.1'
-  id 'maven'
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '2.0.1'
+    id 'maven'
 }
 
 logging.captureStandardOutput LogLevel.QUIET
@@ -27,8 +27,13 @@ repositories {
 mainClassName='ohtu.Main'
 
 dependencies {
-// https://mvnrepository.com/artifact/com.sparkjava/spark-core
+    compile 'org.xerial:sqlite-jdbc:3.7.2'
+
+    // https://mvnrepository.com/artifact/com.sparkjava/spark-core
     compile group: 'com.sparkjava', name: 'spark-core', version: '2.7.1'
+    // https://mvnrepository.com/artifact/com.sparkjava/spark-template-thymeleaf
+    compile group: 'com.sparkjava', name: 'spark-template-thymeleaf', version: '2.7.1'
+
     compile group: 'com.twilio.sdk', name: 'twilio-java-sdk', version: '7.0.0-rc-10'    
     compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: seleniumVersion
     compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version: seleniumVersion
@@ -38,8 +43,7 @@ dependencies {
     testCompile("io.github.bonigarcia:webdrivermanager:1.6.2") {
         exclude group: 'org.seleniumhq.selenium'
     }
-    //    testCompile("org.springframework.boot:spring-boot-starter-test")
-    //    testCompile("org.springframework:spring-test")
+
     testCompile "info.cukes:cucumber-core:" + cucumberVersion
     testCompile "info.cukes:cucumber-java:" + cucumberVersion
     testCompile "info.cukes:cucumber-junit:" + cucumberVersion
@@ -54,22 +58,17 @@ test {
 
 
 
-
-
-
-
-
-
-
-    //    compile("org.springframework.boot:spring-boot-starter-web")
-    //    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    //    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
-    //    
-    //    compile("com.h2database:h2")
-    //    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    //    compile("com.heroku.sdk:heroku-jdbc:0.1.1")
-    //    compile("org.postgresql:postgresql:9.4.1212.jre7")
+//    compile("org.springframework.boot:spring-boot-starter-web")
+//    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+//    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+//    
+//    compile("com.h2database:h2")
+//    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+//    compile("com.heroku.sdk:heroku-jdbc:0.1.1")
+//    compile("org.postgresql:postgresql:9.4.1212.jre7")
     
-    //    compile("org.springframework.boot:spring-boot-devtools")
+//    compile("org.springframework.boot:spring-boot-devtools")
 	
-    //	compile group: 'org.jsoup', name: 'jsoup', version: '1.10.2'
+//	compile group: 'org.jsoup', name: 'jsoup', version: '1.10.2'
+    //    testCompile("org.springframework.boot:spring-boot-starter-test")
+    //    testCompile("org.springframework:spring-test")
