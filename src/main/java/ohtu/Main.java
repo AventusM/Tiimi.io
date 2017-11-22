@@ -1,6 +1,6 @@
 package ohtu;
 
-import java.sql.SQLException;
+import java.sql.*;
 import ohtu.Dao.BookDao;
 import java.util.HashMap;
 import ohtu.database.Database;

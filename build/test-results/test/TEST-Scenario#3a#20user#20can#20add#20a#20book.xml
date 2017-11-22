@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Scenario: user can add a book" tests="4" skipped="2" failures="2" errors="0" timestamp="2017-11-22T16:31:04" hostname="amoroz-HP-Z400-Workstation" time="0.007">
+  <properties/>
+  <testcase name="Given browse is selected" classname="Scenario: user can add a book" time="0.002">
+    <failure message="org.openqa.selenium.NoSuchElementException: No link found with text: browse&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.7.1', revision: '8a0099a', time: '2017-11-06T21:01:39.354Z'&#10;System info: host: 'amoroz-HP-Z400-Workstation', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.10.0-40-generic', java.version: '1.8.0_151'&#10;Driver info: driver.version: HtmlUnitDriver" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: No link found with text: browse
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.7.1', revision: '8a0099a', time: '2017-11-06T21:01:39.354Z'
+System info: host: 'amoroz-HP-Z400-Workstation', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.10.0-40-generic', java.version: '1.8.0_151'
+Driver info: driver.version: HtmlUnitDriver
+	at org.openqa.selenium.htmlunit.HtmlUnitDriver.findElementByLinkText(HtmlUnitDriver.java:1161)
+	at org.openqa.selenium.By$ByLinkText.findElement(By.java:246)
+	at org.openqa.selenium.htmlunit.HtmlUnitDriver$4.call(HtmlUnitDriver.java:1983)
+	at org.openqa.selenium.htmlunit.HtmlUnitDriver$4.call(HtmlUnitDriver.java:1979)
+	at org.openqa.selenium.htmlunit.HtmlUnitDriver.implicitlyWaitFor(HtmlUnitDriver.java:1619)
+	at org.openqa.selenium.htmlunit.HtmlUnitDriver.findElement(HtmlUnitDriver.java:1979)
+	at org.openqa.selenium.htmlunit.HtmlUnitDriver.findElement(HtmlUnitDriver.java:759)
+	at ohtu.Stepdefs.browse_selected(Stepdefs.java:21)
+	at ✽.Given browse is selected(ohtu/bookmark_creation.feature:4)
+</failure>
+  </testcase>
+  <testcase name="When author &quot;Akira Toriyama&quot; and book name &quot;The Winning Universe is Decided!&quot; are submitted" classname="Scenario: user can add a book" time="0.001">
+    <skipped/>
+  </testcase>
+  <testcase name="Then book named &quot;The Winning Universe is Decided!&quot; is added" classname="Scenario: user can add a book" time="0.001">
+    <skipped/>
+  </testcase>
+  <testcase name="classMethod" classname="Scenario: user can add a book" time="1.708">
+    <failure message="org.openqa.selenium.NoSuchElementException: No link found with text: browse&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.7.1', revision: '8a0099a', time: '2017-11-06T21:01:39.354Z'&#10;System info: host: 'amoroz-HP-Z400-Workstation', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.10.0-40-generic', java.version: '1.8.0_151'&#10;Driver info: driver.version: HtmlUnitDriver" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: No link found with text: browse
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.7.1', revision: '8a0099a', time: '2017-11-06T21:01:39.354Z'
+System info: host: 'amoroz-HP-Z400-Workstation', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.10.0-40-generic', java.version: '1.8.0_151'
+Driver info: driver.version: HtmlUnitDriver
+	at org.openqa.selenium.htmlunit.HtmlUnitDriver.findElementByLinkText(HtmlUnitDriver.java:1161)
+	at org.openqa.selenium.By$ByLinkText.findElement(By.java:246)
+	at org.openqa.selenium.htmlunit.HtmlUnitDriver$4.call(HtmlUnitDriver.java:1983)
+	at org.openqa.selenium.htmlunit.HtmlUnitDriver$4.call(HtmlUnitDriver.java:1979)
+	at org.openqa.selenium.htmlunit.HtmlUnitDriver.implicitlyWaitFor(HtmlUnitDriver.java:1619)
+	at org.openqa.selenium.htmlunit.HtmlUnitDriver.findElement(HtmlUnitDriver.java:1979)
+	at org.openqa.selenium.htmlunit.HtmlUnitDriver.findElement(HtmlUnitDriver.java:759)
+	at ohtu.Stepdefs.browse_selected(Stepdefs.java:21)
+	at ✽.Given browse is selected(ohtu/bookmark_creation.feature:4)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
