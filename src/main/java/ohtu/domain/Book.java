@@ -20,6 +20,12 @@ public class Book {
     private String tags;
     private Date time;
 
+    public Book(String author, String title, String isbn) {
+        this.author = author;
+        this.title = title;
+        this.ISBN = isbn;
+    }
+
     public Book(int id, String title, String author, String ISBN, String tags, Date time) {
         this.id = id;
         this.title = title;
@@ -36,8 +42,7 @@ public class Book {
         this.tags = tags;
         this.time = time;
     }
-    
-   
+
     public Integer getId() {
         return id;
     }
@@ -85,5 +90,5 @@ public class Book {
     public void setTime(Date time) {
         this.time = time;
     }
-    
+
 }

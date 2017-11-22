@@ -8,7 +8,6 @@
 
     <body>
         <h1 th:text="${book.name}">Name of the book</h1>
-
         <h2>Current tasks</h2>
 
         <p>
@@ -17,7 +16,8 @@
             <span th:text="${book.ISBN}">ISBN</span>
             <span th:text="${book.tags}">Tags</span>
             <span th:text="${book.time}">Date</span>
-            <a th:href="@{/books}">Back</a>
+            <a href="/books">Back</a>
+            <a name="id" type="hidden">${book.id}</a>
         </p>
 
     </body>

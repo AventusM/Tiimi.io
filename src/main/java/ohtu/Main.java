@@ -1,6 +1,5 @@
 package ohtu;
 
-
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -12,6 +11,7 @@ import ohtu.domain.Book;
 import spark.ModelAndView;
 import spark.Spark;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -20,7 +20,7 @@ public class Main {
 
         Spark.get("/", (req, res) -> {
             HashMap map = new HashMap<>();
-            return new ModelAndView(map, "index.html");
+            return new ModelAndView(map, "index");
         }, new ThymeleafTemplateEngine());
 
         Spark.get("/books", (req, res) -> {
@@ -31,7 +31,7 @@ public class Main {
 
         Spark.get("/books/:id", (req, res) -> {
             HashMap map = new HashMap<>();
-            Integer bookId = Integer.parseInt(req.params(":id"));
+            Integer bookId = Integer.parseInt(req.queryParams(":id"));
             try {
                 map.put("book", books.findOne(bookId));
             } catch (SQLException ex) {
@@ -39,5 +39,15 @@ public class Main {
             }
             return new ModelAndView(map, "book");
         }, new ThymeleafTemplateEngine());
+
+        Spark.post("/books", (request, response) -> {
+            String author = request.queryParams("author");
+            String title = request.queryParams("title");
+            String isbn = request.queryParams("ISBN");
+            Book book = new Book(author, title, isbn);
+            books.saveOrUpdate(book);
+            response.redirect("/books");
+            return "";
+        });
     }
 }
