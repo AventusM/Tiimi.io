@@ -7,9 +7,9 @@
     </head>
 
     <body>
-        <a href="/browse">selaa</a>
+        <a name="browse" href="/browse">browse</a>
         <br/>
-        <a href="/add">lisää uusi kirja</a>
+        <a name="newbook" href="/add">add a new book</a>
         <form method="POST" action="/add">
             Author:<br/>
             <input type="text" name="author"/><br/>
@@ -17,7 +17,7 @@
             <input type="text" name="title"/><br/>
             ISBN:<br/>
             <input type="text" name="isbn"/><br/><br/>
-            <input type="submit" value="Lisää kirja"/>
+            <input type="submit" value="Add!"/>
         </form>
     </body>
 </html>

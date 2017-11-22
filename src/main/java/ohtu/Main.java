@@ -38,7 +38,7 @@ public class Main {
             String title = request.queryParams("title");
             String isbn = request.queryParams("isbn");
             books.add(new Book(author, title, isbn));
-            response.redirect("/add");
+            response.redirect("/browse");
             return "";
         });
 
