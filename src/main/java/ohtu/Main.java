@@ -42,7 +42,8 @@ public class Main {
             String author = request.queryParams("author");
             String title = request.queryParams("title");
             String isbn = request.queryParams("ISBN");
-            Book book = new Book(author, title, isbn);
+            String tags = request.queryParams("tags");
+            Book book = new Book(title, author, isbn, tags);
             books.saveOrUpdate(book);
             response.redirect("/books");
             return "";

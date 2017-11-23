@@ -6,11 +6,8 @@
 package ohtu.domain;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
-/**
- *
- * @author tminka
- */
 public class Book {
 
     private int id;
@@ -20,10 +17,12 @@ public class Book {
     private String tags;
     private Date time;
 
-    public Book(String author, String title, String isbn) {
+    public Book(String title, String author, String isbn, String tags) {
         this.author = author;
         this.title = title;
         this.ISBN = isbn;
+        this.tags = tags;
+        this.time = Date.valueOf(LocalDate.now());
     }
 
     public Book(int id, String title, String author, String ISBN, String tags, Date time) {
