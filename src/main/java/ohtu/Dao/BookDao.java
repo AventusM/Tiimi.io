@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ohtu.Dao;
 
 import java.sql.Connection;
@@ -55,28 +50,44 @@ public class BookDao implements Dao<Book, Integer> {
     }
 
     @Override
-    public Book saveOrUpdate(Book object) throws SQLException {
-        Book byName = findByName(object.getTitle());
+    public Book saveOrUpdate(Book book) throws SQLException {
+        Book byName = findByName(book.getTitle());
 
         if (byName != null) {
-            return byName;
+            update(book);
         }
 
+        //Tallennetaan kirja
         try (Connection conn = database.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO Book (title, author, ISBN, tags, dateAdded) VALUES (?, ?, ?, ?, ?)");
-            stmt.setString(1, object.getTitle());
-            stmt.setString(2, object.getAuthor());
-            stmt.setString(3, object.getISBN());
-            stmt.setString(4, object.getTags());
-            stmt.setDate(5, object.getTime());
+            stmt.setString(1, book.getTitle());
+            stmt.setString(2, book.getAuthor());
+            stmt.setString(3, book.getISBN());
+            stmt.setString(4, book.getTags());
+            stmt.setDate(5, book.getTime());
             stmt.executeUpdate();
         }
 
-        return findByName(object.getTitle());
+        return findByName(book.getTitle());
 
     }
 
-    private Book findByName(String title) throws SQLException {
+    /*
+    Toistaiseksi void -> katotaan, olisiko ISBN kelpaava tunniste
+    Pitää selvittää mitä halutaan edes muuttaa . . .
+     */
+    public void update(Book book) throws SQLException {
+//        Connection connection = database.getConnection();
+//        PreparedStatement statement = connection.prepareStatement(
+//                "UPDATE Book SET title=?, author=?"
+//                + " WHERE ISBN=?");
+//        statement.setString(1, book.getAuthor());
+//        statement.setString(2, book.getTitle());
+//        statement.setString(3, book.getISBN());
+//        statement.executeUpdate();
+    }
+
+    public Book findByName(String title) throws SQLException {
         try (Connection conn = database.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Book WHERE title = ?");
             stmt.setString(1, title);
@@ -92,7 +103,12 @@ public class BookDao implements Dao<Book, Integer> {
 
     @Override
     public void delete(Integer key) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Connection connection = database.getConnection();
+        PreparedStatement statement = connection.prepareStatement("DELETE FROM Book WHERE id = ?");
+        statement.setInt(1, key);
+        statement.executeUpdate();
+        statement.close();
+        connection.close();
     }
 
 }
