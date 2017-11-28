@@ -33,7 +33,6 @@ public class Main {
             System.out.println("eterwerwa");
             HashMap map = new HashMap<>();
             Integer bookId = Integer.parseInt(req.params(":id"));
-            System.out.println("nyt etitää yks");
             map.put("book", books.findOne(bookId));
             return new ModelAndView(map, "book");
         }, new ThymeleafTemplateEngine());
@@ -44,9 +43,21 @@ public class Main {
             String isbn = request.queryParams("ISBN");
             String tags = request.queryParams("tags");
             Book book = new Book(title, author, isbn, tags);
-            books.saveOrUpdate(book);
+            books.save(book);
             response.redirect("/books");
             return "";
         });
+
+        Spark.delete("/books/:id", (req, res) -> {
+            Integer id = Integer.parseInt(req.params(":id"));
+            Book book = books.findOne(id);
+            
+            if(book != null){
+                books.delete(id);
+            }
+            res.redirect("/books");
+            return ""; //ehkä voisi palauttaa jonkun ilmoituksen
+        });
+
     }
 }

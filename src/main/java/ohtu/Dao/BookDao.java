@@ -50,12 +50,12 @@ public class BookDao implements Dao<Book, Integer> {
     }
 
     @Override
-    public Book saveOrUpdate(Book book) throws SQLException {
+    public Book save(Book book) throws SQLException {
         Book byName = findByName(book.getTitle());
 
         if (byName != null) {
-            update(book);
-        }
+            return findByName(byName.getTitle());
+        } //ei haluta kahta saman nimistä
 
         //Tallennetaan kirja
         try (Connection conn = database.getConnection()) {
@@ -72,19 +72,19 @@ public class BookDao implements Dao<Book, Integer> {
 
     }
 
-    /*
-    Toistaiseksi void -> katotaan, olisiko ISBN kelpaava tunniste
-    Pitää selvittää mitä halutaan edes muuttaa . . .
-     */
-    public void update(Book book) throws SQLException {
-//        Connection connection = database.getConnection();
-//        PreparedStatement statement = connection.prepareStatement(
-//                "UPDATE Book SET title=?, author=?"
-//                + " WHERE ISBN=?");
-//        statement.setString(1, book.getAuthor());
-//        statement.setString(2, book.getTitle());
-//        statement.setString(3, book.getISBN());
-//        statement.executeUpdate();
+    @Override
+    public Book update(Book book) throws SQLException {
+//        Book book = findOne(id);
+        Connection connection = database.getConnection();
+        PreparedStatement statement = connection.prepareStatement("UPDATE Book SET title = ?, author = ?, ISBN = ?, tags = ? WHERE id = ?");
+        statement.setString(1, book.getTitle());
+        statement.setString(2, book.getAuthor());
+        statement.setString(3, book.getISBN());
+        statement.setString(4, book.getTags());
+        statement.setInt(5, book.getId());
+        statement.executeUpdate();
+
+        return findByName(book.getTitle());
     }
 
     public Book findByName(String title) throws SQLException {
