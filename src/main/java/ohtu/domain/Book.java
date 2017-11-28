@@ -20,13 +20,12 @@ public class Book {
         this.time = Date.valueOf(LocalDate.now());
     }
 
-    public Book(int id, String title, String author, String ISBN, String tags, Date time) {
+    public Book(int id, String title, String author, String ISBN, String tags) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.ISBN = ISBN;
         this.tags = tags;
-        this.time = time;
     }
 
     public Book(String title, String author, String ISBN, String tags, Date time) {

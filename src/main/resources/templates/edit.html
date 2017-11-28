@@ -1,0 +1,21 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Tiimi.io</title>
+    </head>
+    <body>
+        <h1 th:text="${book.title}">Book</h1>
+
+        <form method="POST" th:action="@{~/books/{id}/edit(id=${book.id})}">
+            <label>Title:</label><br/>
+            <input type="text" name="title" th:placeholder="${book.title}"/><br/>
+            <label>Author:</label><br/>
+            <input type="text" name="author" th:placeholder="${book.author}"/><br/>
+            <label>ISBN:</label><br/>
+            <input type="text" name="ISBN" th:placeholder="${book.ISBN}"/><br/>
+            <label>Tags:</label><br/>
+            <input type="text" name="tags" th:placeholder="${book.tags}"/><br/>       
+            <button type="submit">Edit</button>
+        </form>
+    </body>
+</html>

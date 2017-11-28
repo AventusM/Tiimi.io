@@ -27,7 +27,7 @@ public class BookDao implements Dao<Book, Integer> {
             if (!result.next()) {
                 return null;
             }
-            Book b = new Book(result.getInt("id"), result.getString("title"), result.getString("author"), result.getString("ISBN"), result.getString("tags"), result.getDate("dateAdded"));
+            Book b = new Book(result.getInt("id"), result.getString("title"), result.getString("author"), result.getString("ISBN"), result.getString("tags"));
             System.out.println(b.getTitle() + " " + b.getTags());
             return b;
 
@@ -42,7 +42,7 @@ public class BookDao implements Dao<Book, Integer> {
                 ResultSet result = conn.prepareStatement("SELECT * FROM Book").executeQuery()) {
 
             while (result.next()) {
-                users.add(new Book(result.getInt("id"), result.getString("title"), result.getString("author"), result.getString("ISBN"), result.getString("tags"), result.getDate("dateAdded")));
+                users.add(new Book(result.getInt("id"), result.getString("title"), result.getString("author"), result.getString("ISBN"), result.getString("tags")));
             }
         }
 
@@ -76,7 +76,10 @@ public class BookDao implements Dao<Book, Integer> {
     public Book update(Book book) throws SQLException {
 //        Book book = findOne(id);
         Connection connection = database.getConnection();
-        PreparedStatement statement = connection.prepareStatement("UPDATE Book SET title = ?, author = ?, ISBN = ?, tags = ? WHERE id = ?");
+        PreparedStatement statement = connection.prepareStatement(
+                "UPDATE Book"
+                + " SET title = ?, author = ?, ISBN = ?, tags = ?"
+                + " WHERE id = ?");
         statement.setString(1, book.getTitle());
         statement.setString(2, book.getAuthor());
         statement.setString(3, book.getISBN());
@@ -97,7 +100,7 @@ public class BookDao implements Dao<Book, Integer> {
                 return null;
             }
 
-            return new Book(result.getInt("id"), result.getString("title"), result.getString("author"), result.getString("ISBN"), result.getString("tags"), result.getDate("dateAdded"));
+            return new Book(result.getInt("id"), result.getString("title"), result.getString("author"), result.getString("ISBN"), result.getString("tags"));
         }
     }
 

@@ -37,6 +37,25 @@ public class Main {
             return new ModelAndView(map, "book");
         }, new ThymeleafTemplateEngine());
 
+        Spark.get("/books/:id/edit", (request, response) -> {
+            HashMap map = new HashMap();
+            Integer bookId = Integer.parseInt(request.params(":id"));
+            map.put("book", books.findOne(bookId));
+            return new ModelAndView(map, "edit");
+        }, new ThymeleafTemplateEngine());
+
+        Spark.post("/books/:id/edit", (request, response) -> {
+            int id = Integer.parseInt(request.params(":id"));
+            String author = request.queryParams("author");
+            String title = request.queryParams("title");
+            String isbn = request.queryParams("ISBN");
+            String tags = request.queryParams("tags");
+            Book book = new Book(id, title, author, isbn, tags);
+            books.update(book);
+            response.redirect("/books");
+            return "";
+        });
+
         Spark.post("/books", (request, response) -> {
             String author = request.queryParams("author");
             String title = request.queryParams("title");
@@ -48,11 +67,11 @@ public class Main {
             return "";
         });
 
-        Spark.delete("/books/:id", (req, res) -> {
+        Spark.post("/books/:id", (req, res) -> {
             Integer id = Integer.parseInt(req.params(":id"));
             Book book = books.findOne(id);
-            
-            if(book != null){
+
+            if (book != null) {
                 books.delete(id);
             }
             res.redirect("/books");
