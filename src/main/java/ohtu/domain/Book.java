@@ -2,6 +2,7 @@ package ohtu.domain;
 
 import java.sql.Date;
 import java.time.LocalDate;
+//import java.time.LocalDate;
 
 public class Book {
 
@@ -28,7 +29,8 @@ public class Book {
         this.tags = tags;
     }
 
-    public Book(String title, String author, String ISBN, String tags, Date time) {
+    public Book(Integer id, String title, String author, String ISBN, String tags, Date time) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.ISBN = ISBN;

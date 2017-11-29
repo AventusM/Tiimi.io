@@ -30,7 +30,6 @@ public class Main {
         }, new ThymeleafTemplateEngine());
 
         Spark.get("/books/:id", (req, res) -> {
-            System.out.println("eterwerwa");
             HashMap map = new HashMap<>();
             Integer bookId = Integer.parseInt(req.params(":id"));
             map.put("book", books.findOne(bookId));

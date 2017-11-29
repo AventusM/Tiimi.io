@@ -27,8 +27,7 @@ public class BookDao implements Dao<Book, Integer> {
             if (!result.next()) {
                 return null;
             }
-            Book b = new Book(result.getInt("id"), result.getString("title"), result.getString("author"), result.getString("ISBN"), result.getString("tags"));
-            System.out.println(b.getTitle() + " " + b.getTags());
+            Book b = new Book(result.getInt("id"), result.getString("title"), result.getString("author"), result.getString("ISBN"), result.getString("tags"), result.getDate("dateAdded"));
             return b;
 
         }
